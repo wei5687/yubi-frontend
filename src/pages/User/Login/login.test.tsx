@@ -4,6 +4,7 @@ import { TestBrowser } from '@@/testBrowser';
 
 // @ts-ignore
 import { startMock } from '@@/requestRecordMock';
+import {listChartByPageUsingPost} from "@/services/yubi/chartController";
 
 const waitTime = (time: number = 100) => {
   return new Promise((resolve) => {
@@ -16,6 +17,7 @@ const waitTime = (time: number = 100) => {
 let server: {
   close: () => void;
 };
+
 
 describe('Login Page', () => {
   beforeAll(async () => {
