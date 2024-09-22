@@ -67,7 +67,7 @@ export async function listChartByPageUsingPost(
   body: API.ChartQueryRequest,
   options?: { [key: string]: any },
 ) {
-  return request<API.BaseResponsePageChart_>('/api/Chart/list/page', {
+  return request<API.BaseResponsePageChart_>('/api/chart/list/page', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
