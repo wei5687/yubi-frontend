@@ -1,4 +1,10 @@
 declare namespace API {
+  type BaseResponseBiResponse_ = {
+    code?: number;
+    data?: BiResponse;
+    message?: string;
+  };
+
   type BaseResponseBoolean_ = {
     code?: number;
     data?: boolean;
@@ -41,6 +47,12 @@ declare namespace API {
     message?: string;
   };
 
+  type BaseResponsePagePostVO_ = {
+    code?: number;
+    data?: PagePostVO_;
+    message?: string;
+  };
+
   type BaseResponsePageUser_ = {
     code?: number;
     data?: PageUser_;
@@ -50,6 +62,12 @@ declare namespace API {
   type BaseResponsePageUserVO_ = {
     code?: number;
     data?: PageUserVO_;
+    message?: string;
+  };
+
+  type BaseResponsePostVO_ = {
+    code?: number;
+    data?: PostVO;
     message?: string;
   };
 
@@ -71,6 +89,12 @@ declare namespace API {
     message?: string;
   };
 
+  type BiResponse = {
+    chartId?: number;
+    genChart?: string;
+    genResult?: string;
+  };
+
   type Chart = {
     chartData?: string;
     chartType?: string;
@@ -80,6 +104,7 @@ declare namespace API {
     goal?: string;
     id?: number;
     isDelete?: number;
+    name?: string;
     updateTime?: string;
     userId?: number;
   };
@@ -88,7 +113,8 @@ declare namespace API {
     chartData?: string;
     chartType?: string;
     goal?: string;
-    id?: number;
+    isDelete?: number;
+    name?: string;
   };
 
   type ChartEditRequest = {
@@ -96,6 +122,7 @@ declare namespace API {
     chartType?: string;
     goal?: string;
     id?: number;
+    name?: string;
   };
 
   type ChartQueryRequest = {
@@ -103,6 +130,7 @@ declare namespace API {
     current?: number;
     goal?: string;
     id?: number;
+    name?: string;
     pageSize?: number;
     sortField?: string;
     sortOrder?: string;
@@ -110,17 +138,36 @@ declare namespace API {
   };
 
   type ChartUpdateRequest = {
-    content?: string;
+    chartData?: string;
+    chartType?: string;
+    createTime?: Data;
+    genChart?: string;
+    genResult?: string;
+    goal?: string;
     id?: number;
-    tags?: string[];
-    title?: string;
+    isDelete?: number;
+    name?: string;
+    updateTime?: Data;
   };
+
+  type Data = true;
 
   type DeleteRequest = {
     id?: number;
   };
 
+  type genChartByAiUsingPOSTParams = {
+    chartType?: string;
+    goal?: string;
+    name?: string;
+  };
+
   type getChartByIdUsingGETParams = {
+    /** id */
+    id?: number;
+  };
+
+  type getPostVOByIdUsingGETParams = {
     /** id */
     id?: number;
   };
@@ -176,6 +223,19 @@ declare namespace API {
     total?: number;
   };
 
+  type PagePostVO_ = {
+    countId?: string;
+    current?: number;
+    maxLimit?: number;
+    optimizeCountSql?: boolean;
+    orders?: OrderItem[];
+    pages?: number;
+    records?: PostVO[];
+    searchCount?: boolean;
+    size?: number;
+    total?: number;
+  };
+
   type PageUser_ = {
     countId?: string;
     current?: number;
@@ -215,8 +275,30 @@ declare namespace API {
     userId?: number;
   };
 
+  type PostAddRequest = {
+    content?: string;
+    tags?: string[];
+    title?: string;
+  };
+
+  type PostEditRequest = {
+    content?: string;
+    id?: number;
+    tags?: string[];
+    title?: string;
+  };
+
   type PostFavourAddRequest = {
     postId?: number;
+  };
+
+  type PostFavourQueryRequest = {
+    current?: number;
+    pageSize?: number;
+    postQueryRequest?: PostQueryRequest;
+    sortField?: string;
+    sortOrder?: string;
+    userId?: number;
   };
 
   type PostQueryRequest = {
@@ -237,6 +319,28 @@ declare namespace API {
 
   type PostThumbAddRequest = {
     postId?: number;
+  };
+
+  type PostUpdateRequest = {
+    content?: string;
+    id?: number;
+    tags?: string[];
+    title?: string;
+  };
+
+  type PostVO = {
+    content?: string;
+    createTime?: string;
+    favourNum?: number;
+    hasFavour?: boolean;
+    hasThumb?: boolean;
+    id?: number;
+    tagList?: string[];
+    thumbNum?: number;
+    title?: string;
+    updateTime?: string;
+    user?: UserVO;
+    userId?: number;
   };
 
   type uploadFileUsingPOSTParams = {
